@@ -28,7 +28,8 @@ namespace MetricManager
         PathTooLongException=14,
         PlatformNotSupportedException=15,
         RankException=16,
-        TimeoutException=17
+        TimeoutException=17,
+        UriFormatException=18
     }
 
     public enum Percentile
