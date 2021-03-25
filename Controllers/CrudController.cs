@@ -58,7 +58,6 @@ namespace MetricManagerTests.Controllers
                     weatherForecast.TemperatureC = newTemperatureC;
                     weatherForecast.Summary = "Changed by User";
                 }
-
             }
             return Ok();
         }
@@ -66,30 +65,7 @@ namespace MetricManagerTests.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete([FromQuery] DateTime firstDate, [FromQuery] DateTime lastDate)
         {
-            int  index = 0;
-            int  firstIndex = 0;
-            var listEnumerator = _holder.Values.GetEnumerator();
-         // подсчитаем сколько всего значений
-            foreach (var weatherForecast in _holder.Values)
-            {
-                if (weatherForecast.Date >= firstDate && weatherForecast.Date <= lastDate)
-                {
-                    index++;
-                }
-            }
-            if (index == 0) return Ok();
-            // Теперь найдем первое вхождение
-            foreach (var weatherForecast in _holder.Values)
-            {
-                if (weatherForecast.Date >= firstDate && weatherForecast.Date <= lastDate)
-                {
-                    var first = listEnumerator.Current;
-                    firstIndex = Convert.ToInt32(firstIndex);
-                }
-            }
-            // удалим все значения диапазона
-            _holder.Values.RemoveRange(firstIndex, index);
-          
+            _holder.Values.RemoveAll(item => item.Date >= firstDate && item.Date <= lastDate);
             return Ok();
         }
     }
