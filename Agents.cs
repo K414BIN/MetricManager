@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MetricManagerTests.Controllers
+namespace MetricManagerTests
 {
     public class Agents
     {
